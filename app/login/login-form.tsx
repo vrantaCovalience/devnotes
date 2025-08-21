@@ -1,7 +1,13 @@
 'use client'
 
+import { AlertCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 export function LoginForm() {
   const [username, setUsername] = useState('')
@@ -40,47 +46,46 @@ export function LoginForm() {
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       {error && (
-        <div className="rounded-md bg-red-50 p-4">
-          <div className="text-sm text-red-700">{error}</div>
-        </div>
+        <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       )}
       
-      <div className="rounded-md shadow-sm -space-y-px">
-        <div>
-          <input
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="username">Username</Label>
+          <Input
             id="username"
             name="username"
             type="text"
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-            placeholder="Username"
+            placeholder="Enter your username"
           />
         </div>
-        <div>
-          <input
+        <div className="space-y-2">
+          <Label htmlFor="password">Password</Label>
+          <Input
             id="password"
             name="password"
             type="password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-            placeholder="Password"
+            placeholder="Enter your password"
           />
         </div>
       </div>
 
-      <div>
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-        >
-          {isLoading ? 'Signing in...' : 'Sign in'}
-        </button>
-      </div>
+      <Button
+        type="submit"
+        disabled={isLoading}
+        className="w-full"
+      >
+        {isLoading ? 'Signing in...' : 'Sign in'}
+      </Button>
     </form>
   )
 }

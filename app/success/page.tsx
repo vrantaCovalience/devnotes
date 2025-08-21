@@ -1,5 +1,9 @@
 import { verifySession } from '@/lib/auth'
+import { ArrowRight, CheckCircle, LogOut } from 'lucide-react'
 import { redirect } from 'next/navigation'
+
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default async function SuccessPage() {
   const session = await verifySession()
@@ -11,44 +15,52 @@ export default async function SuccessPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Login Successful! 🎉
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Welcome back, {session.username}!
-        </p>
-      </div>
+        <Card>
+          <CardHeader className="text-center">
+            <div className="flex justify-center mb-4">
+              <CheckCircle className="h-16 w-16 text-green-500" />
+            </div>
+            <CardTitle className="text-3xl font-extrabold text-gray-900">
+              Login Successful! 🎉
+            </CardTitle>
+            <CardDescription className="text-gray-600">
+              Welcome back, {session.username}!
+            </CardDescription>
+          </CardHeader>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <div className="space-y-6">
+          <CardContent className="space-y-6">
             <div className="text-center">
-              <p className="text-gray-700">
+              <p className="text-gray-700 mb-6">
                 You have successfully logged in to the application.
               </p>
             </div>
             
-            <div className="text-center">
-              <a 
-                href="/dashboard"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mb-3"
+            <div className="space-y-4">
+              <Button 
+                asChild
+                className="w-full"
+                size="lg"
               >
-                Go to Dashboard
-              </a>
-            </div>
+                <a href="/dashboard">
+                  <ArrowRight className="h-4 w-4 mr-2" />
+                  Go to Dashboard
+                </a>
+              </Button>
             
-            <div className="text-center">
-              <form action="/api/auth/logout" method="POST">
-                <button
+              <form action="/api/auth/logout" method="POST" className="w-full">
+                <Button
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
                 >
+                  <LogOut className="h-4 w-4 mr-2" />
                   Logout
-                </button>
+                </Button>
               </form>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   )
