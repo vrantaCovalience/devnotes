@@ -210,25 +210,28 @@ npm run db:seed
 
 ## 🎓 Workshop Learning Outcomes
 
-After completing this workshop, you'll understand:
+After completing this workshop, you'll master GitHub Copilot's essential features and techniques:
 
-1. **Modern React Development** with Next.js App Router
-2. **Database Integration** using Prisma ORM
-3. **Authentication Implementation** with JWT sessions
-4. **Docker for Development** environments
-5. **TypeScript** for type-safe development
-6. **API Route** creation and authentication middleware
-7. **GitHub Copilot** integration for faster development
+1. **Agent Ask & Edit Mode** - Master interactive conversations and inline code editing with AI assistance
+2. **Chat Modes & Instructions** - Learn different chat participants (@workspace, @terminal) and optimize prompts for better results
+3. **Agentic Techniques** - Use advanced prompting strategies and multi-turn conversations for complex development tasks
+4. **Configuration & Settings** - Optimize Copilot settings and workspace setup for maximum daily productivity
+5. **Code Generation & Review** - Generate complete functions, APIs, and documentation while leveraging AI for code analysis
+6. **Workflow Integration** - Seamlessly integrate Copilot into debugging, testing, and full-stack development processes
+7. **Best Practices** - Establish effective AI-pair programming patterns and reusable prompt templates
 
-## 🔗 Next Steps
+## 🔗 Next Steps - Building DevNotes with GitHub Copilot
 
-This boilerplate can be extended with:
-- User registration functionality
-- Password reset features
-- Role-based access control
-- Note-taking CRUD operations
-- Real-time features with WebSockets
-- Deployment to Vercel/Railway
+In the next phase of this workshop, we'll extend this authentication boilerplate into a complete **note-taking CRUD application** using GitHub Copilot:
+
+### 📝 Core Features to Build
+- **Notes Database Model** - Extend Prisma schema with Note entity and user relationships
+- **CRUD API Endpoints** - Build `/api/notes` routes for create, read, update, delete operations
+- **Dashboard Interface** - Transform dashboard into a notes listing page with search and filters
+- **Note Creation** - Build `/notes/new` page with rich text editing capabilities
+- **Note Editing** - Implement `/notes/[id]` page for viewing and editing individual notes
+- **Note Management** - Add features like delete confirmation, bulk operations, and categories
+
 
 ---
 
