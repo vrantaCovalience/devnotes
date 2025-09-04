@@ -29,13 +29,12 @@
 
 ### 4. 📊 Dashboard with Notes Listing
 - [ ] Create dashboard page showing all notes
-- [ ] Add search functionality
+<!-- - [ ] Add search functionality
 - [ ] Add filter options (category, date, tags)
-- [ ] Implement pagination
+- [ ] Implement pagination -->
 
 ### 5. ✏️ Note Creation
 - [ ] Create "New Note" page
-- [ ] Add rich text editor
 - [ ] Implement save functionality
 - [ ] Add category selection
 - [ ] Add tags input
