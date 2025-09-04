@@ -46,3 +46,39 @@ export async function GET(req: NextRequest) {
     })),
   });
 }
+
+export async function POST(req: NextRequest) {
+  const session = await verifySession();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const { title, content, category, tags } = await req.json();
+
+    if (!title || !content) {
+      return NextResponse.json(
+        { error: "Title and content are required" },
+        { status: 400 }
+      );
+    }
+
+    const note = await prisma.note.create({
+      data: {
+        title,
+        content,
+        category: category || "general",
+        tags: tags || [],
+        userId: session.userId,
+      },
+    });
+
+    return NextResponse.json(note, { status: 201 });
+  } catch (error) {
+    console.error("Note creation error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
