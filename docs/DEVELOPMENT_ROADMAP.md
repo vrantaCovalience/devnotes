@@ -2,21 +2,38 @@
 
 ## 📋 What Needs to Be Done
 
-### 1. 🌙 Dark/Light Mode
-- [ ] Install next-themes package
+### 1. 🗄️ Database Schema (Notes Model)
+- [ ] Add Note model to Prisma schema
+- [ ] Define relationships between User and Note models
+- [ ] Add fields for title, content, category, tags
+- [ ] Include metadata fields (archived, pinned, timestamps)
+- [ ] Generate Prisma client
+- [ ] Run database migration
+- [ ] Test schema with seed data
+
+### 2. 🔌 Basic Notes API
+- [ ] Create GET /api/notes endpoint (fetch all notes)
+- [ ] Create GET /api/notes/[id] endpoint (fetch single note)
+- [ ] Create POST /api/notes endpoint (create new note)
+- [ ] Create PUT /api/notes/[id] endpoint (update note)
+- [ ] Create DELETE /api/notes/[id] endpoint (delete note)
+- [ ] Add proper error handling and validation
+- [ ] Implement authentication middleware
+- [ ] Test all endpoints with sample data
+
+### 3. 🌙 Dark/Light Mode
+- [ ] use ShadCn themeProvider.
 - [ ] Add theme toggle button
 - [ ] Update components for dark mode support
 - [ ] Configure Tailwind for dark mode
 
-### 2. 📊 Dashboard with Notes Listing
-- [ ] Create Notes database model in Prisma
-- [ ] Build notes API endpoints (GET, POST, PUT, DELETE)
+### 4. 📊 Dashboard with Notes Listing
 - [ ] Create dashboard page showing all notes
 - [ ] Add search functionality
 - [ ] Add filter options (category, date, tags)
 - [ ] Implement pagination
 
-### 3. ✏️ Note Creation
+### 5. ✏️ Note Creation
 - [ ] Create "New Note" page
 - [ ] Add rich text editor
 - [ ] Implement save functionality
@@ -24,14 +41,14 @@
 - [ ] Add tags input
 - [ ] Add auto-save feature
 
-### 4. 📝 Note Editing
+### 6. 📝 Note Editing
 - [ ] Create note view/edit page
 - [ ] Pre-fill form with existing note data
 - [ ] Add update functionality
 - [ ] Show saving status
 - [ ] Warn about unsaved changes
 
-### 5. 🗂️ Note Management
+### 7. 🗂️ Note Management
 - [ ] Add delete confirmation modal
 - [ ] Implement bulk selection (checkboxes)
 - [ ] Add bulk delete functionality
