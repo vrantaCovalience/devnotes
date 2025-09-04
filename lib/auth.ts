@@ -38,11 +38,22 @@ export async function createSession(userId: string, username: string) {
   })
 }
 
+/**
+ * Deletes the 'session' cookie from the cookie store, effectively ending the user's session.
+ *
+ * @returns {Promise<void>} A promise that resolves when the session cookie has been deleted.
+ */
 export async function deleteSession() {
   const cookieStore = await cookies()
   cookieStore.delete('session')
 }
 
+/**
+ * Verifies the current user session and returns user information if authenticated.
+ *
+ * @returns A promise that resolves to an object containing the user's ID and username if the session is valid,
+ *          or `null` if the session is invalid or the user is not authenticated.
+ */
 export async function verifySession() {
   const session = await getSession()
   if (!session?.userId) {

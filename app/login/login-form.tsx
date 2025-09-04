@@ -1,47 +1,21 @@
-'use client'
+"use client"
 
-import { AlertCircle } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-
-import { Alert, AlertDescription } from '@/components/ui/alert'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { AlertCircle } from "lucide-react"
+import { useLoginForm } from "./useLoginForm"
 
 export function LoginForm() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError('')
-
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      })
-
-      if (response.ok) {
-        router.push('/success')
-      } else {
-        const data = await response.json()
-        setError(data.error || 'Login failed')
-      }
-    } catch (error) {
-      setError('An error occurred. Please try again.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  const {
+    username,
+    password,
+    error,
+    isLoading,
+    handleChange,
+    handleSubmit,
+  } = useLoginForm()
 
   return (
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -51,7 +25,7 @@ export function LoginForm() {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
-      
+
       <div className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="username">Username</Label>
@@ -61,7 +35,7 @@ export function LoginForm() {
             type="text"
             required
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={handleChange}
             placeholder="Enter your username"
           />
         </div>
@@ -73,7 +47,7 @@ export function LoginForm() {
             type="password"
             required
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
             placeholder="Enter your password"
           />
         </div>
@@ -84,7 +58,7 @@ export function LoginForm() {
         disabled={isLoading}
         className="w-full"
       >
-        {isLoading ? 'Signing in...' : 'Sign in'}
+        {isLoading ? "Signing in..." : "Sign in"}
       </Button>
     </form>
   )

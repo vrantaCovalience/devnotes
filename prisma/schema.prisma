@@ -16,6 +16,21 @@ model User {
   password  String   // hashed with bcrypt
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  notes     Note[]
 
   @@map("users")
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  title     String
+  content   String   @db.Text
+  category  String   @default("general")
+  tags      String[] @default([])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notes")
 }

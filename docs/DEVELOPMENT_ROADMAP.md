@@ -3,7 +3,6 @@
 ## 📋 What Needs to Be Done
 
 ### 1. 🌙 Dark/Light Mode
-- [ ] Install next-themes package
 - [ ] Add theme toggle button
 - [ ] Update components for dark mode support
 - [ ] Configure Tailwind for dark mode
