@@ -16,6 +16,35 @@ model User {
   password  String   // hashed with bcrypt
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  
+  // Relationship to notes
+  notes     Note[]
 
   @@map("users")
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  title     String
+  content   String   @db.Text
+  category  String?
+  tags      String[] // Array of tags
+  
+  // Metadata fields
+  archived  Boolean  @default(false)
+  pinned    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Foreign key relationship
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Indexes for better performance
+  @@index([userId])
+  @@index([category])
+  @@index([archived])
+  @@index([pinned])
+  @@index([createdAt])
+  @@map("notes")
 }

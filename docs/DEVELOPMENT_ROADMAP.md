@@ -3,23 +3,22 @@
 ## 📋 What Needs to Be Done
 
 ### 1. 🗄️ Database Schema (Notes Model)
-- [ ] Add Note model to Prisma schema
-- [ ] Define relationships between User and Note models
-- [ ] Add fields for title, content, category, tags
-- [ ] Include metadata fields (archived, pinned, timestamps)
-- [ ] Generate Prisma client
-- [ ] Run database migration
-- [ ] Test schema with seed data
+- [x] Add Note model to Prisma schema
+- [x] Define relationships between User and Note models
+- [x] Add fields for title, content, category, tags
+- [x] Include metadata fields (archived, pinned, timestamps)
+- [x] Generate Prisma client
+- [x] Run database migration
+- [x] Test schema with seed data
 
 ### 2. 🔌 Basic Notes API
-- [ ] Create GET /api/notes endpoint (fetch all notes)
-- [ ] Create GET /api/notes/[id] endpoint (fetch single note)
-- [ ] Create POST /api/notes endpoint (create new note)
-- [ ] Create PUT /api/notes/[id] endpoint (update note)
-- [ ] Create DELETE /api/notes/[id] endpoint (delete note)
-- [ ] Add proper error handling and validation
-- [ ] Implement authentication middleware
-- [ ] Test all endpoints with sample data
+- [x] Create GET /api/notes endpoint (fetch all notes)
+- [x] Create GET /api/notes/[id] endpoint (fetch single note)
+- [x] Create POST /api/notes endpoint (create new note)
+- [x] Create PUT /api/notes/[id] endpoint (update note)
+- [x] Create DELETE /api/notes/[id] endpoint (delete note)
+- [x] Add proper error handling and validation
+- [x] Implement authentication middleware
 
 ### 3. 🌙 Dark/Light Mode
 - [ ] use ShadCn themeProvider.
