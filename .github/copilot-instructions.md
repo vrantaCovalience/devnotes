@@ -38,22 +38,23 @@ app/login-form/
 
 ```tsx
 // LoginForm.tsx
-import { useLoginForm } from './useLoginForm'
+import { useLoginForm } from "./useLoginForm";
 
 export function LoginForm() {
-  const { username, password, error, isLoading, handleChange, handleSubmit } = useLoginForm()
+  const { username, password, error, isLoading, handleChange, handleSubmit } =
+    useLoginForm();
   // ...JSX using these values/handlers...
 }
 ```
 
 ```ts
 // useLoginForm.ts
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function useLoginForm() {
   // ...all state and logic here...
-  return { username, password, error, isLoading, handleChange, handleSubmit }
+  return { username, password, error, isLoading, handleChange, handleSubmit };
 }
 ```
 
@@ -64,7 +65,7 @@ export function useLoginForm() {
 ```bash
 # Database & Development
 npm run docker:up        # Start PostgreSQL container
-npm run db:push         # Apply Prisma schema changes  
+npm run db:push         # Apply Prisma schema changes
 npm run db:seed         # Create demo user (alice/password123)
 npm run dev            # Start Next.js dev server
 
@@ -76,31 +77,34 @@ npm run start          # Start production server
 ## Implementation Examples
 
 ### Protected Routes Pattern
+
 ```typescript
 // Standard pattern for protected pages
 export default async function ProtectedPage() {
-  const session = await verifySession()
-  if (!session) redirect('/login')
-  
-  return <div>Protected content for {session.username}</div>
+  const session = await verifySession();
+  if (!session) redirect("/login");
+
+  return <div>Protected content for {session.username}</div>;
 }
 ```
 
 ### API Route Authentication
+
 ```typescript
 // Standard pattern for protected API routes
-import { verifySession } from '@/lib/auth'
+import { verifySession } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
-  const session = await verifySession()
+  const session = await verifySession();
   if (!session) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   // Handle authenticated request
 }
 ```
 
 ## Environment Configuration
+
 - **Development**: Uses docker-compose PostgreSQL with default credentials
 - **Required Variables**: `DATABASE_URL`, `JWT_SECRET`
 - **Database URL**: `postgresql://devnotes:devnotes@localhost:5432/devnotes`
@@ -110,7 +114,7 @@ export async function POST(request: NextRequest) {
 Based on `docs/DEVELOPMENT_ROADMAP.md`, the next development phase includes:
 
 1. **Notes CRUD**: Extend Prisma schema with `Note` model linked to users
-2. **Dashboard Enhancement**: Transform basic dashboard into notes listing with search/filters  
+2. **Dashboard Enhancement**: Transform basic dashboard into notes listing with search/filters
 3. **Note Editor**: Rich text editing with auto-save functionality
 4. **Theme System**: Dark/light mode with next-themes integration
 5. **Note Management**: Categories, tags, bulk operations, archive functionality

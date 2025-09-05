@@ -210,14 +210,14 @@ npm run db:seed
 
 ## 🎓 Workshop Learning Outcomes
 
-After completing this workshop, you'll master GitHub Copilot's essential features and techniques:
+After completing this workshop, you'll have hands on experience with GitHub Copilot's essential features and techniques:
 
-1. **Agent Ask & Edit Mode** - Master interactive conversations and inline code editing with AI assistance
+1. **Agent Ask Mode** - How to do interactive conversations and inline code editing with AI assistance
 2. **Chat Modes & Instructions** - Learn different chat participants (@workspace, @terminal) and optimize prompts for better results
 3. **Agentic Techniques** - Use advanced prompting strategies and multi-turn conversations for complex development tasks
 4. **Configuration & Settings** - Optimize Copilot settings and workspace setup for maximum daily productivity
 5. **Code Generation & Review** - Generate complete functions, APIs, and documentation while leveraging AI for code analysis
-6. **Workflow Integration** - Seamlessly integrate Copilot into debugging, testing, and full-stack development processes
+6. **Workflow Integration** - Seamlessly integrate Copilot into debugging and full-stack development processes
 7. **Best Practices** - Establish effective AI-pair programming patterns and reusable prompt templates
 
 ## 🔗 Next Steps - Building DevNotes with GitHub Copilot
