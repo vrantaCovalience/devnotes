@@ -43,34 +43,39 @@ Follow these steps to get the application running:
 
 ### 1. Clone and Navigate
 ```bash
-git clone <repository-url>
+git clone https://github.com/vrantaCovalience/devnotes.git
 ```
 
-### 2. Install Dependencies
+### 2. Move to project directory
+```
+cd .\devnotes\ 
+```  
+
+### 3. Install Dependencies
 ```bash
 npm install
 ```
 
-### 3. Start the Database
+### 4. Start the Database
 ```bash
 npm run docker:up
 ```
 *This starts a PostgreSQL container with the required database*
 
-### 4. Set up Environment Variables
+### 5. Set up Environment Variables
 The `.env` and `.env.local` files are already configured. No changes needed unless you want to customize:
 ```bash
 DATABASE_URL="postgresql://devnotes:devnotes@localhost:5432/devnotes"
 JWT_SECRET="your-super-secret-jwt-key-change-this-in-production"
 ```
 
-### 5. Initialize Database
+### 6. Initialize Database
 ```bash
 npm run db:push    # Creates database tables
 npm run db:seed    # Creates test user data
 ```
 
-### 6. Start Development Server
+### 7. Start Development Server
 ```bash
 npm run dev
 ```
