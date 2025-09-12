@@ -56,7 +56,11 @@ cd .\devnotes\
 npm install
 ```
 
-### 4. Start the Database
+### 4. Start the Docker and Database
+First, ensure Docker Desktop is running on your system, then start the database container:
+
+1. **Start Docker Desktop** - Launch the Docker Desktop application and wait for it to fully start, then
+2. **Start Database Container**:
 ```bash
 npm run docker:up
 ```
@@ -64,6 +68,11 @@ npm run docker:up
 
 ### 5. Set up Environment Variables
 The `.env` and `.env.local` files are already configured. No changes needed unless you want to customize:
+
+> **⚠️ Port Availability Check:** Make sure port 5432 is not already in use on your system. If it's busy, either:
+> - Stop the service using port 5432 (Recommended), or  
+> - Change the port in both `docker-compose.yml` and `DATABASE_URL` to an available port (e.g., 5433)
+
 ```bash
 DATABASE_URL="postgresql://devnotes:devnotes@localhost:5432/devnotes"
 JWT_SECRET="your-super-secret-jwt-key-change-this-in-production"
