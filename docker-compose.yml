@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: devnotes
       POSTGRES_DB: devnotes
     ports:
-      - "5433:5432"
+      - "5422:5432"
     volumes:
       - devnotes-data:/var/lib/postgresql/data
 

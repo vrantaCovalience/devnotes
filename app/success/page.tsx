@@ -1,15 +1,22 @@
-import { verifySession } from '@/lib/auth'
-import { ArrowRight, CheckCircle, LogOut } from 'lucide-react'
-import { redirect } from 'next/navigation'
+import { verifySession } from "@/lib/auth";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import { redirect } from "next/navigation";
 
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { LogoutButton } from "@/components/logout-button";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default async function SuccessPage() {
-  const session = await verifySession()
-  
+  const session = await verifySession();
+
   if (!session) {
-    redirect('/login')
+    redirect("/login");
   }
 
   return (
@@ -34,34 +41,20 @@ export default async function SuccessPage() {
                 You have successfully logged in to the application.
               </p>
             </div>
-            
+
             <div className="space-y-4">
-              <Button 
-                asChild
-                className="w-full"
-                size="lg"
-              >
+              <Button asChild className="w-full" size="lg">
                 <a href="/dashboard">
                   <ArrowRight className="h-4 w-4 mr-2" />
                   Go to Dashboard
                 </a>
               </Button>
-            
-              <form action="/api/auth/logout" method="POST" className="w-full">
-                <Button
-                  type="submit"
-                  variant="outline"
-                  className="w-full"
-                  size="lg"
-                >
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Logout
-                </Button>
-              </form>
+
+              <LogoutButton />
             </div>
           </CardContent>
         </Card>
       </div>
     </div>
-  )
+  );
 }
