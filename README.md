@@ -1,6 +1,8 @@
 # GitHub Copilot Workshop - Authentication Boilerplate
 
-This repository contains a **minimal authentication system** built as part of a **GitHub Copilot workshop**. The goal is to demonstrate how GitHub Copilot can accelerate development by helping build a complete full-stack authentication flow with modern technologies.
+This repository contains a **minimal authentication system** built as part of a **GitHub Copilot workshop**. The goal is to demonstrate how GitHub Copilot can accelerate development by## 🔄 On With-Backend Branch (Workshop Phase 2)
+
+You're now on the `with-backend` branch which includes the complete Notes API and database functionality. Since you've already completed the basic setup from the main branch, you only need to set up the backend-specific components.lping build a complete full-stack authentication flow with modern technologies.
 
 ## 🎯 Workshop Objectives
 
@@ -167,15 +169,21 @@ devnotes/
 # Development
 npm run dev                       # Start development server
 
-# Database Management
-npm run docker:up                 # Start PostgreSQL container
-npm run docker:down               # Stop PostgreSQL container
-npm run db:push                   # Apply schema changes to database
-npm run db:seed                   # Seed database with test data
+# Database Management (Backend Branch)
+docker-compose up -d db          # Start PostgreSQL container (REQUIRED for backend)
+docker-compose down              # Stop PostgreSQL container  
+npx prisma db push              # Apply schema changes to database
+npx prisma db seed              # Seed database with test data
+npx prisma generate             # Regenerate Prisma client (if needed)
+npx prisma migrate status       # Check migration status
+
+# Legacy Commands (Main Branch)
+npm run docker:up                # Start PostgreSQL container
+npm run docker:down              # Stop PostgreSQL container
 
 # Production
-npm run build                     # Build for production
-npm run start                     # Start production server
+npm run build                    # Build for production
+npm run start                    # Start production server
 ```
 
 ## 🧰 Technology Stack
@@ -234,17 +242,82 @@ After completing this workshop, you'll master GitHub Copilot's essential feature
 6. **Workflow Integration** - Seamlessly integrate Copilot into debugging, testing, and full-stack development processes
 7. **Best Practices** - Establish effective AI-pair programming patterns and reusable prompt templates
 
+
+### �️ On backend branch
+
+**1. Start the Database (CRITICAL)**
+```bash
+# Make sure Docker Desktop is running first!
+docker-compose up -d db
+```
+> **⚠️ Important:** The backend branch requires PostgreSQL. The database MUST be running before starting the dev server.
+
+**2. Set Up Database Schema & Data**
+```bash
+# Apply the Notes schema to database
+npx prisma db push
+
+# Seed with test data (user: alice, password: password123 + sample notes)
+npx prisma db seed
+```
+
+**3. Start Development Server**
+```bash
+npm run dev
+```
+
+### ✅ Verify Backend Setup
+
+1. **Login** with `alice` / `password123`
+2. **Go to Dashboard** - should see a "Test Notes API" button
+3. **Click the button** - check browser console for API response
+4. **Should see** sample notes logged to console
+
+### 🛠️ If Things Don't Work
+
+**Database Connection Errors:**
+```bash
+# Check if database container is running
+docker ps
+# Should see: devnotes-db-1 container
+
+# If not running, start it:
+docker-compose up -d db
+```
+
+**Prisma Client Errors:**
+```bash
+# Regenerate Prisma client (ignore permission warnings)
+npx prisma generate
+
+# Or reset everything:
+docker-compose down
+docker-compose up -d db
+npx prisma db push
+npx prisma db seed
+```
+
+**Development Server Issues:**
+```bash
+# Kill any running processes and restart
+npm run dev
+```
+
 ## 🔗 Next Steps - Building DevNotes with GitHub Copilot
 
-In the next phase of this workshop, we'll extend this authentication boilerplate into a complete **note-taking CRUD application** using GitHub Copilot:
+The `with-backend` branch includes a complete **note-taking CRUD application** foundation:
 
-### 📝 Core Features to Build
-- **Notes Database Model** - Extend Prisma schema with Note entity and user relationships
-- **CRUD API Endpoints** - Build `/api/notes` routes for create, read, update, delete operations
+### ✅ Already Implemented (Steps #1-2 Complete)
+- **✅ Notes Database Model** - Complete Prisma schema with Note entity and user relationships
+- **✅ CRUD API Endpoints** - Full `/api/notes` routes for create, read, update, delete operations
+- **✅ API Testing Interface** - Dashboard button to test the Notes API
+
+### 📝 Ready to Build (Next Workshop Steps)
 - **Dashboard Interface** - Transform dashboard into a notes listing page with search and filters
-- **Note Creation** - Build `/notes/new` page with rich text editing capabilities
+- **Note Creation** - Build `/notes/new` page with rich text editing capabilities  
 - **Note Editing** - Implement `/notes/[id]` page for viewing and editing individual notes
 - **Note Management** - Add features like delete confirmation, bulk operations, and categories
+- **Dark/Light Theme** - Implement theme switching with ShadCN components
 
 
 ---
