@@ -243,6 +243,38 @@ After completing this workshop, you'll master GitHub Copilot's essential feature
 7. **Best Practices** - Establish effective AI-pair programming patterns and reusable prompt templates
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### �️ On backend branch
 
 **1. Start the Database (CRITICAL)**
